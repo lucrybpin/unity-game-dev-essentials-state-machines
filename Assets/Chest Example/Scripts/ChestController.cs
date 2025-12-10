@@ -4,10 +4,12 @@ using UnityEngine;
 public class ChestController : MonoBehaviour
 {
     [SerializeField] ChestView _view;
+    [SerializeField] bool _isClosed;
 
     void Awake()
     {
-        _view = GetComponent<ChestView>();
+        _view       = GetComponent<ChestView>();
+        _isClosed   = true;
     }
 
     void Start()
@@ -17,6 +19,15 @@ public class ChestController : MonoBehaviour
 
     void OnClick()
     {
-        Debug.Log("Clicked");
+        if (_isClosed)
+        {
+            _isClosed = false;
+            _view.Open();
+        }
+        else
+        {
+            _isClosed = true;
+            _view.Close();
+        }
     }
 }
