@@ -31,7 +31,7 @@ public class Bear : MonoBehaviour
                 _transitionTimer = 0;
                 _currentAnimation = "Walk Forward";
             }
-            else if (_input.y == 0 && _currentAnimation != "Idle")
+            else if (_input.y == 0 && _currentAnimation != "Idle" && _currentAnimation != "Eat")
             {
                 _animator.CrossFade("Idle", _transitionTime);
                 _isTransitioning = true;
@@ -44,6 +44,14 @@ public class Bear : MonoBehaviour
                 _isTransitioning = true;
                 _transitionTimer = 0;
                 _currentAnimation = "Walk Back";
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _animator.CrossFade("Eat", _transitionTime);
+                _isTransitioning = true;
+                _transitionTimer = 0;
+                _currentAnimation = "Eat";
             }
         }
     }
