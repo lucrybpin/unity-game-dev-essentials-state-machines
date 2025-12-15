@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bear : MonoBehaviour
@@ -9,6 +10,7 @@ public class Bear : MonoBehaviour
     float _transitionTimer = 0f;
     float _transitionTime = 0.1f;
     string _currentAnimation = "Idle";
+    public event Action<float> OnMove;
 
     void Update()
     {
@@ -54,5 +56,7 @@ public class Bear : MonoBehaviour
                 _currentAnimation = "Eat";
             }
         }
+
+        OnMove?.Invoke(_input.y);
     }
 }
