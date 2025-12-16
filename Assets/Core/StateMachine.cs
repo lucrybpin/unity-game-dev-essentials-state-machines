@@ -7,6 +7,7 @@ namespace StateMachines
     [Serializable]
     public class StateMachine
     {
+        [SerializeField] string _currentStateName;
         IState _currentState;
         Dictionary<string, IState> _states = new Dictionary<string, IState>();
 
@@ -26,6 +27,7 @@ namespace StateMachines
 
             _currentState?.Exit();
             _currentState = _states[stateName];
+            _currentStateName = stateName;
             _currentState.Enter();
         }
 

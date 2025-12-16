@@ -8,6 +8,8 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public CharacterMovement Movement { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
 
+        [field: SerializeField] public StateMachine StateMachine { get; private set; }
+
         void Awake()
         {
             Movement = new CharacterMovement(GetComponent<Rigidbody2D>());
