@@ -25,5 +25,6 @@ namespace StateMachines.CharacterExample
         {
             _input.Disable();
         }
-    }
+
+    } // End of Class
 }
