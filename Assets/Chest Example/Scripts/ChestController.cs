@@ -1,33 +1,37 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ChestView))]
-public class ChestController : MonoBehaviour
+namespace StateMachines.ChestExample
 {
-    [SerializeField] ChestView _view;
-    [SerializeField] bool _isClosed;
-
-    void Awake()
+    [RequireComponent(typeof(ChestView))]
+    public class ChestController : MonoBehaviour
     {
-        _view       = GetComponent<ChestView>();
-        _isClosed   = true;
-    }
+        [SerializeField] ChestView _view;
+        [SerializeField] bool _isClosed;
 
-    void Start()
-    {
-        _view.OnClick += OnClick;
-    }
-
-    void OnClick()
-    {
-        if (_isClosed)
+        void Awake()
         {
-            _isClosed = false;
-            _view.Open();
-        }
-        else
-        {
+            _view = GetComponent<ChestView>();
             _isClosed = true;
-            _view.Close();
         }
-    }
+
+        void Start()
+        {
+            _view.OnClick += OnClick;
+        }
+
+        void OnClick()
+        {
+            if (_isClosed)
+            {
+                _isClosed = false;
+                _view.Open();
+            }
+            else
+            {
+                _isClosed = true;
+                _view.Close();
+            }
+        }
+
+    } // End of Class
 }

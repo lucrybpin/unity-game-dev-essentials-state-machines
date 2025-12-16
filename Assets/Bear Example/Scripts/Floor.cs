@@ -1,26 +1,31 @@
 using UnityEngine;
 
-public class Floor : MonoBehaviour
+
+namespace StateMachines.BearExample
 {
-    [SerializeField] Renderer _renderer;
-    [SerializeField] Vector2 _scrollSpeed;
-    [SerializeField] Bear _bear;
-
-    void Start()
+    public class Floor : MonoBehaviour
     {
-        _bear.OnMove += OnMove;
-    }
+        [SerializeField] Renderer _renderer;
+        [SerializeField] Vector2 _scrollSpeed;
+        [SerializeField] Bear _bear;
 
-    void OnMove(float speed)
-    {
-        if (_renderer  == null)
-            return;
+        void Start()
+        {
+            _bear.OnMove += OnMove;
+        }
 
-        if (_renderer.material == null)
-            return;
+        void OnMove(float speed)
+        {
+            if (_renderer == null)
+                return;
 
-        _scrollSpeed = new Vector2(0f, speed);
-        Vector2 newOffset = _renderer.material.mainTextureOffset + _scrollSpeed * Time.deltaTime;
-        _renderer.material.mainTextureOffset = newOffset;
-    }
+            if (_renderer.material == null)
+                return;
+
+            _scrollSpeed = new Vector2(0f, speed);
+            Vector2 newOffset = _renderer.material.mainTextureOffset + _scrollSpeed * Time.deltaTime;
+            _renderer.material.mainTextureOffset = newOffset;
+        }
+
+    } // End of Class 
 }
