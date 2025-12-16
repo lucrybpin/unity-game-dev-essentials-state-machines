@@ -6,6 +6,7 @@ namespace StateMachines
     [Serializable]
     public class StateMachine
     {
+        IState _currentState;
         Dictionary<string, IState> _states = new Dictionary<string, IState>();
 
         public void AddState(string stateName, IState state)
@@ -16,7 +17,10 @@ namespace StateMachines
 
         public void ChangeState(string stateName) { }
 
-        public void Update() { }
+        public void Update()
+        {
+            _currentState?.Execute();
+        }
 
     } // End of Class
 }
