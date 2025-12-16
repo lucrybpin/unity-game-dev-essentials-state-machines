@@ -734,6 +734,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ActionReader>k__BackingField:
     <MoveAction>k__BackingField: {x: 0, y: 0}
+  <Movement>k__BackingField:
+    <RigidBody>k__BackingField: {fileID: 0}
+  <Animator>k__BackingField: {fileID: 1574368037}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

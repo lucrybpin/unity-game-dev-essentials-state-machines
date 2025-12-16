@@ -6,6 +6,7 @@ namespace StateMachines.CharacterExample
     {
         [field: SerializeField] public CharacterActionReader ActionReader { get; private set; }
         [field: SerializeField] public CharacterMovement Movement { get; private set; }
+        [field: SerializeField] public Animator Animator { get; private set; }
 
         void Awake()
         {
@@ -20,7 +21,16 @@ namespace StateMachines.CharacterExample
         void Update()
         {
             ActionReader.OnUpdate();
-            // Movement.SetVelocity(ActionReader.MoveAction.x, Movement.RigidBody.linearVelocityY);
+
+            if (ActionReader.MoveAction.x != 0)
+            {
+                Animator.Play("Walk");
+            }
+            else
+            {
+                Animator.Play("Idle");
+            }
+
             Movement.SetVelocity(x: ActionReader.MoveAction.x);
         }
 
