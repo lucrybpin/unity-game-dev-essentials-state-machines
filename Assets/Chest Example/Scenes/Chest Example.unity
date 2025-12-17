@@ -871,16 +871,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070342b817149c34bacc3e4209642849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <StateMachine>k__BackingField:
+    _currentStateName: 
   _view: {fileID: 0}
   _isClosed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2054012107}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1115695848}
   - {fileID: 1806678701}
   - {fileID: 482747086}
-  - {fileID: 2054012107}

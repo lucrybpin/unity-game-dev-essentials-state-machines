@@ -12,14 +12,26 @@ namespace StateMachines.ChestExample
         void Awake()
         {
             StateMachine = new StateMachine();
+            StateMachine.AddState(ChestState.CLOSED.ToString(), new ChestStateClosed(this));
             _view = GetComponent<ChestView>();
             _isClosed = true;
         }
 
-        // void Start()
-        // {
-        //     _view.OnClick += OnClick;
-        // }
+        void Start()
+        {
+            StateMachine.ChangeState(ChestState.CLOSED.ToString());
+        }
+
+        void Update()
+        {
+            StateMachine.Update();
+        }
+
+        public void Open()
+        {
+            _view.Open();
+            _isClosed = false;
+        }
 
         // void OnClick()
         // {
