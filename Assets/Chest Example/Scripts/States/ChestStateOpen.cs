@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace StateMachines.ChestExample
 {
     public class ChestStateOpen : IState
@@ -12,22 +10,23 @@ namespace StateMachines.ChestExample
             _chestController = chestController;
         }
 
-        public void Enter()
+        void OnClick()
         {
+            _chestController.Close();
+            StateMachine.ChangeState(ChestState.CLOSED.ToString());
         }
 
-        public void Execute()
+        public void Enter()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _chestController.Close();
-                StateMachine.ChangeState(ChestState.CLOSED.ToString());
-                return;
-            }
+            _chestController.View.OnClick += OnClick;
         }
+
+        public void Execute() { }
 
         public void Exit()
         {
+            _chestController.View.OnClick -= OnClick;
         }
-    }
+
+    } // End of Class
 }
