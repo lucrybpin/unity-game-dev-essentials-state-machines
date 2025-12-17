@@ -1,29 +1,34 @@
+using UnityEngine;
+
 namespace StateMachines.CharacterExample
 {
-    public class IdleState : IState
+    public class WalkState : IState
     {
         public StateMachine StateMachine { get; set; }
         CharacterController _owner;
         
-        public IdleState(CharacterController owner)
+        public WalkState(CharacterController owner)
         {
             _owner = owner;
         }
         
         public void Enter()
         {
-            _owner.Animator.Play("Idle");
-            _owner.Movement.SetVelocity(x: 0);
+            _owner.Animator.Play("Walk");
         }
         
         public void Execute()
         {
-            // -> WALK
-            if (_owner.ActionReader.MoveAction.x != 0)
+            // -> IDLE
+            if (_owner.ActionReader.MoveAction.x == 0)
             {
-                StateMachine.ChangeState(CharacterState.WALK.ToString());
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
                 return;
             }
+
+            _owner.Movement.SetVelocity(
+                x: _owner.ActionReader.MoveAction.x * 2f
+            );
         }
         
         public void Exit()

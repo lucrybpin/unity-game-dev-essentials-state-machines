@@ -16,6 +16,7 @@ namespace StateMachines.CharacterExample
             StateMachine    = new StateMachine();
 
             StateMachine.AddState(CharacterState.IDLE.ToString(), new IdleState(this));
+            StateMachine.AddState(CharacterState.WALK.ToString(), new WalkState(this));
         }
 
         void Start()
@@ -32,17 +33,6 @@ namespace StateMachines.CharacterExample
         {
             ActionReader.OnUpdate();
             StateMachine.Update();
-
-            // if (ActionReader.MoveAction.x != 0)
-            // {
-            //     Animator.Play("Walk");
-            // }
-            // else
-            // {
-            //     Animator.Play("Idle");
-            // }
-
-            // Movement.SetVelocity(x: ActionReader.MoveAction.x);
         }
 
         void OnDisable()
