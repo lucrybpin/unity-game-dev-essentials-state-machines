@@ -2,13 +2,12 @@ using UnityEngine;
 
 namespace StateMachines.ChestExample
 {
-    public class ChestStateClosed : IState
+    public class ChestStateOpen : IState
     {
         public StateMachine StateMachine { get; set; }
-
         ChestController _chestController;
 
-        public ChestStateClosed(ChestController chestController)
+        public ChestStateOpen(ChestController chestController)
         {
             _chestController = chestController;
         }
@@ -21,8 +20,8 @@ namespace StateMachines.ChestExample
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _chestController.Open();
-                StateMachine.ChangeState(ChestState.OPEN.ToString());
+                _chestController.Close();
+                StateMachine.ChangeState(ChestState.CLOSED.ToString());
                 return;
             }
         }
@@ -30,6 +29,5 @@ namespace StateMachines.ChestExample
         public void Exit()
         {
         }
-
-    } // End of Class
+    }
 }

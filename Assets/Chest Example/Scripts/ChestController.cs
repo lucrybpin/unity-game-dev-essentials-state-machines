@@ -13,6 +13,7 @@ namespace StateMachines.ChestExample
         {
             StateMachine = new StateMachine();
             StateMachine.AddState(ChestState.CLOSED.ToString(), new ChestStateClosed(this));
+            StateMachine.AddState(ChestState.OPEN.ToString(), new ChestStateOpen(this));
             _view = GetComponent<ChestView>();
             _isClosed = true;
         }
@@ -31,6 +32,12 @@ namespace StateMachines.ChestExample
         {
             _view.Open();
             _isClosed = false;
+        }
+
+        public void Close()
+        {
+            _view.Close();
+            _isClosed = true;
         }
 
         // void OnClick()
