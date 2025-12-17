@@ -7,9 +7,11 @@ namespace StateMachines.CharacterExample
     public class CharacterMovement
     {
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
+        [field: SerializeField] public float WalkSpeed { get; private set; }
 
-        public CharacterMovement(Rigidbody2D rigidbody)
+        public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody)
         {
+            WalkSpeed = properties.WalkSpeed;
             RigidBody = rigidbody;
         }
 

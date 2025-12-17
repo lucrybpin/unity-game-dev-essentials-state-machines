@@ -27,7 +27,7 @@ namespace StateMachines.CharacterExample
             }
 
             _owner.Movement.SetVelocity(
-                x: _owner.ActionReader.MoveAction.x * 2f
+                x: _owner.Movement.WalkSpeed * _owner.ActionReader.MoveAction.x
             );
         }
         
