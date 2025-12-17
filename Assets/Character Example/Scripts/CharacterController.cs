@@ -12,7 +12,15 @@ namespace StateMachines.CharacterExample
 
         void Awake()
         {
-            Movement = new CharacterMovement(GetComponent<Rigidbody2D>());
+            Movement        = new CharacterMovement(GetComponent<Rigidbody2D>());
+            StateMachine    = new StateMachine();
+
+            StateMachine.AddState(CharacterState.IDLE.ToString(), new IdleState(this));
+        }
+
+        void Start()
+        {
+            StateMachine.ChangeState(CharacterState.IDLE.ToString());
         }
 
         void OnEnable()
@@ -23,17 +31,18 @@ namespace StateMachines.CharacterExample
         void Update()
         {
             ActionReader.OnUpdate();
+            StateMachine.Update();
 
-            if (ActionReader.MoveAction.x != 0)
-            {
-                Animator.Play("Walk");
-            }
-            else
-            {
-                Animator.Play("Idle");
-            }
+            // if (ActionReader.MoveAction.x != 0)
+            // {
+            //     Animator.Play("Walk");
+            // }
+            // else
+            // {
+            //     Animator.Play("Idle");
+            // }
 
-            Movement.SetVelocity(x: ActionReader.MoveAction.x);
+            // Movement.SetVelocity(x: ActionReader.MoveAction.x);
         }
 
         void OnDisable()
