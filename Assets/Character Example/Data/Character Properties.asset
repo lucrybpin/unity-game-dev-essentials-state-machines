@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7529bc73a3447004b9e9698947f086c2, type: 3}
   m_Name: Character Properties
   m_EditorClassIdentifier: 
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundCheckRayLength: 1
   WalkSpeed: 2.1
   JumpSpeed: 6.4

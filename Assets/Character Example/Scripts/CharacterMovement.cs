@@ -6,15 +6,26 @@ namespace StateMachines.CharacterExample
     [Serializable]
     public class CharacterMovement
     {
+        [field: SerializeField] public bool IsGrounded { get; private set; }
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
         [field: SerializeField] public float JumpSpeed { get; private set; }
 
+        [SerializeField] LayerMask _obstacleLayer;
+        [SerializeField] float _groundCheckRayLength;
+
         public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody)
         {
-            WalkSpeed = properties.WalkSpeed;
-            JumpSpeed = properties.JumpSpeed;
-            RigidBody = rigidbody;
+            _obstacleLayer          = properties.ObstacleLayer;
+            _groundCheckRayLength   = properties.GroundCheckRayLength;
+            WalkSpeed               = properties.WalkSpeed;
+            JumpSpeed               = properties.JumpSpeed;
+            RigidBody               = rigidbody;
+        }
+
+        public void OnUpdate()
+        {
+            IsGrounded = Physics2D.Raycast(RigidBody.transform.position, Vector2.down, _groundCheckRayLength, _obstacleLayer);
         }
 
         public void SetVelocity(float x, float y)
@@ -33,6 +44,15 @@ namespace StateMachines.CharacterExample
             float newY = y ?? currentVelocity.y;
 
             SetVelocity(newX, newY);
+        }
+
+        public void DebugRays()
+        {
+            if(!Application.isPlaying)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(RigidBody.transform.position, RigidBody.transform.position + new Vector3(0f, -_groundCheckRayLength, 0f));
         }
         
     } // End of Class

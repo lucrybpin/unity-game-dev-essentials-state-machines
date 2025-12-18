@@ -10,6 +10,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public Animator Animator { get; private set; }
 
         [field: SerializeField] public StateMachine StateMachine { get; private set; }
+        [SerializeField] bool _debug;
 
         void Awake()
         {
@@ -34,12 +35,21 @@ namespace StateMachines.CharacterExample
         void Update()
         {
             ActionReader.OnUpdate();
+            Movement.OnUpdate();
             StateMachine.Update();
         }
 
         void OnDisable()
         {
             ActionReader.OnDisable();
+        }
+
+        void OnDrawGizmos()
+        {
+            if(!_debug)
+                return;
+
+            Movement.DebugRays();
         }
 
     } // End of Class

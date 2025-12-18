@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 253741727}
   - component: {fileID: 253741726}
   - component: {fileID: 253741728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,12 +737,18 @@ MonoBehaviour:
     <MoveAction>k__BackingField: {x: 0, y: 0}
     <JumpAction>k__BackingField: 0
   <Movement>k__BackingField:
+    <IsGrounded>k__BackingField: 0
     <RigidBody>k__BackingField: {fileID: 0}
     <WalkSpeed>k__BackingField: 0
     <JumpSpeed>k__BackingField: 0
+    _obstacleLayer:
+      serializedVersion: 2
+      m_Bits: 0
+    _groundCheckRayLength: 0
   <Animator>k__BackingField: {fileID: 1574368037}
   <StateMachine>k__BackingField:
     _currentStateName: 
+  _debug: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
