@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Character Properties
   m_EditorClassIdentifier: 
   WalkSpeed: 2.1
+  JumpSpeed: 6.4

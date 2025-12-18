@@ -18,6 +18,7 @@ namespace StateMachines.CharacterExample
 
             StateMachine.AddState(CharacterState.IDLE.ToString(), new IdleState(this));
             StateMachine.AddState(CharacterState.WALK.ToString(), new WalkState(this));
+            StateMachine.AddState(CharacterState.JUMP.ToString(), new JumpState(this));
         }
 
         void Start()

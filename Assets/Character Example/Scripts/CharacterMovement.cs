@@ -8,10 +8,12 @@ namespace StateMachines.CharacterExample
     {
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
+        [field: SerializeField] public float JumpSpeed { get; private set; }
 
         public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody)
         {
             WalkSpeed = properties.WalkSpeed;
+            JumpSpeed = properties.JumpSpeed;
             RigidBody = rigidbody;
         }
 
@@ -23,7 +25,7 @@ namespace StateMachines.CharacterExample
             RigidBody.linearVelocity = new Vector2(x,y);
         }
 
-        public void SetVelocity(float ? x, float ? y = null)
+        public void SetVelocity(float ? x = null, float ? y = null)
         {
             Vector3 currentVelocity = RigidBody.linearVelocity;
 

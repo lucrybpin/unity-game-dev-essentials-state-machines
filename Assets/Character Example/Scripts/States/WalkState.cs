@@ -26,6 +26,13 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> JUMP
+            if (_owner.ActionReader.JumpAction)
+            {
+                StateMachine.ChangeState(CharacterState.JUMP.ToString());
+                return;
+            }
+
             _owner.Movement.SetVelocity(
                 x: _owner.Movement.WalkSpeed * _owner.ActionReader.MoveAction.x
             );

@@ -7,5 +7,6 @@ namespace StateMachines.CharacterExample
     {
         [Header("Movement Data")]
         public float WalkSpeed;
+        public float JumpSpeed;
     }
 }

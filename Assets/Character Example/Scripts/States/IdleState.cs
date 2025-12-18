@@ -24,6 +24,13 @@ namespace StateMachines.CharacterExample
                 StateMachine.ChangeState(CharacterState.WALK.ToString());
                 return;
             }
+
+            // -> JUMP
+            if (_owner.ActionReader.JumpAction)
+            {
+                StateMachine.ChangeState(CharacterState.JUMP.ToString());
+                return;
+            }
         }
         
         public void Exit()
