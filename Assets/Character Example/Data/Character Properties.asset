@@ -17,4 +17,5 @@ MonoBehaviour:
     m_Bits: 64
   GroundCheckRayLength: 1
   WalkSpeed: 2.1
+  CrouchSpeed: 1.4
   JumpSpeed: 6.4

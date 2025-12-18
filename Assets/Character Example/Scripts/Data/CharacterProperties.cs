@@ -10,6 +10,7 @@ namespace StateMachines.CharacterExample
         [Header("Movement Data")]
         public float GroundCheckRayLength;
         public float WalkSpeed;
+        public float CrouchSpeed;
         public float JumpSpeed;
     }
 }

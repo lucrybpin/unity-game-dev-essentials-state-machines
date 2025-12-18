@@ -9,6 +9,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public bool IsGrounded { get; private set; }
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
+        [field: SerializeField] public float CrouchSpeed { get; private set; }
         [field: SerializeField] public float JumpSpeed { get; private set; }
         [field: SerializeField] public Vector2 Velocity { get; private set; }
 
@@ -20,6 +21,7 @@ namespace StateMachines.CharacterExample
             _obstacleLayer          = properties.ObstacleLayer;
             _groundCheckRayLength   = properties.GroundCheckRayLength;
             WalkSpeed               = properties.WalkSpeed;
+            CrouchSpeed             = properties.CrouchSpeed;
             JumpSpeed               = properties.JumpSpeed;
             RigidBody               = rigidbody;
         }

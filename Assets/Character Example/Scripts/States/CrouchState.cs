@@ -39,6 +39,19 @@ namespace StateMachines.CharacterExample
                 StateMachine.ChangeState(CharacterState.WALK.ToString());
                 return;
             }
+
+            if (_owner.ActionReader.MoveAction.x != 0)
+            {
+                _owner.Animator.Play("Crouch.Crouch Walk");
+                _owner.Movement.SetVelocity(
+                    x: _owner.Movement.CrouchSpeed * _owner.ActionReader.MoveAction.x
+                );
+            }
+            else
+            {
+                _owner.Animator.Play("Crouch.Crouch Idle");
+            }
+
         }
         
         public void Exit()
