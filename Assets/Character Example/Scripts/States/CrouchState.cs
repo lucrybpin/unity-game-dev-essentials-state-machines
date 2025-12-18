@@ -1,19 +1,18 @@
 namespace StateMachines.CharacterExample
 {
-    public class IdleState : IState
+    public class CrouchState : IState
     {
         public StateMachine StateMachine { get; set; }
         CharacterController _owner;
         
-        public IdleState(CharacterController owner)
+        public CrouchState(CharacterController owner)
         {
             _owner = owner;
         }
         
         public void Enter()
         {
-            _owner.Animator.Play("Idle");
-            _owner.Movement.SetVelocity(x: 0);
+            _owner.Animator.Play("Crouch.Crouch Idle");
         }
         
         public void Execute()
@@ -25,24 +24,19 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
-            // -> CROUCH
-            if (_owner.ActionReader.MoveAction.y < 0)
+            // -> IDLE
+            if (_owner.ActionReader.MoveAction.y >= 0
+                && _owner.ActionReader.MoveAction.x == 0)
             {
-                StateMachine.ChangeState(CharacterState.CROUCH.ToString());
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
                 return;
             }
-
+            
             // -> WALK
-            if (_owner.ActionReader.MoveAction.x != 0)
+            if (_owner.ActionReader.MoveAction.y >= 0
+                && _owner.ActionReader.MoveAction.x != 0)
             {
                 StateMachine.ChangeState(CharacterState.WALK.ToString());
-                return;
-            }
-
-            // -> JUMP
-            if (_owner.ActionReader.JumpAction)
-            {
-                StateMachine.ChangeState(CharacterState.JUMP.ToString());
                 return;
             }
         }

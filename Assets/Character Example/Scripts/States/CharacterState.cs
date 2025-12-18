@@ -6,5 +6,6 @@ namespace StateMachines.CharacterExample
         WALK,
         JUMP,
         FALL,
+        CROUCH,
     }
 }

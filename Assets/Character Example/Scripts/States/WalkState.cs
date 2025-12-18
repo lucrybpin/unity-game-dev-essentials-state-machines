@@ -40,6 +40,13 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> CROUCH
+            if (_owner.ActionReader.MoveAction.y < 0)
+            {
+                StateMachine.ChangeState(CharacterState.CROUCH.ToString());
+                return;
+            }
+
             _owner.Movement.SetVelocity(
                 x: _owner.Movement.WalkSpeed * _owner.ActionReader.MoveAction.x
             );
