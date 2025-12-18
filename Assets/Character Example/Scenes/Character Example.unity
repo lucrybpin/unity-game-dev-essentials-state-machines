@@ -741,6 +741,7 @@ MonoBehaviour:
     <RigidBody>k__BackingField: {fileID: 0}
     <WalkSpeed>k__BackingField: 0
     <JumpSpeed>k__BackingField: 0
+    <Velocity>k__BackingField: {x: 0, y: 0}
     _obstacleLayer:
       serializedVersion: 2
       m_Bits: 0
