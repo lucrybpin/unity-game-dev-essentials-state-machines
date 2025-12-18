@@ -10,6 +10,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
         [field: SerializeField] public float JumpSpeed { get; private set; }
+        [field: SerializeField] public Vector2 Velocity { get; private set; }
 
         [SerializeField] LayerMask _obstacleLayer;
         [SerializeField] float _groundCheckRayLength;
@@ -25,7 +26,8 @@ namespace StateMachines.CharacterExample
 
         public void OnUpdate()
         {
-            IsGrounded = Physics2D.Raycast(RigidBody.transform.position, Vector2.down, _groundCheckRayLength, _obstacleLayer);
+            IsGrounded  = Physics2D.Raycast(RigidBody.transform.position, Vector2.down, _groundCheckRayLength, _obstacleLayer);
+            Velocity    = RigidBody.linearVelocity;
         }
 
         public void SetVelocity(float x, float y)

@@ -5,5 +5,6 @@ namespace StateMachines.CharacterExample
         IDLE,
         WALK,
         JUMP,
+        FALL,
     }
 }

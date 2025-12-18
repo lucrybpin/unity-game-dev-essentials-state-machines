@@ -19,6 +19,13 @@ namespace StateMachines.CharacterExample
         
         public void Execute()
         {
+            // -> FALL
+            if (!_owner.Movement.IsGrounded)
+            {
+                StateMachine.ChangeState(CharacterState.FALL.ToString());
+                return;
+            }
+
             // -> IDLE
             if (_owner.ActionReader.MoveAction.x == 0)
             {

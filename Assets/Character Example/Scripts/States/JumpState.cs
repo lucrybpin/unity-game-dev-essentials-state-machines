@@ -16,7 +16,15 @@ namespace StateMachines.CharacterExample
             _owner.Movement.SetVelocity(y: _owner.Movement.JumpSpeed);
         }
 
-        public void Execute() { }
+        public void Execute()
+        {
+            // -> FALL
+            if (_owner.Movement.Velocity.y <= 0)
+            {
+                StateMachine.ChangeState(CharacterState.FALL.ToString());
+                return;
+            }
+        }
 
         public void Exit() { }
 
