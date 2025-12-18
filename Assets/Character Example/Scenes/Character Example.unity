@@ -735,9 +735,11 @@ MonoBehaviour:
   <CharacterProperties>k__BackingField: {fileID: 11400000, guid: f04648077dc227f4da3e89c377f2112d, type: 2}
   <ActionReader>k__BackingField:
     <MoveAction>k__BackingField: {x: 0, y: 0}
+    <JumpAction>k__BackingField: 0
   <Movement>k__BackingField:
     <RigidBody>k__BackingField: {fileID: 0}
     <WalkSpeed>k__BackingField: 0
+    <JumpSpeed>k__BackingField: 0
   <Animator>k__BackingField: {fileID: 1574368037}
   <StateMachine>k__BackingField:
     _currentStateName: 
