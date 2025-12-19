@@ -22,6 +22,7 @@ namespace StateMachines.CharacterExample
             StateMachine.AddState(CharacterState.JUMP.ToString(), new JumpState(this));
             StateMachine.AddState(CharacterState.FALL.ToString(), new FallState(this));
             StateMachine.AddState(CharacterState.CROUCH.ToString(), new CrouchState(this));
+            StateMachine.AddState(CharacterState.ROLL.ToString(), new RollState(this));
         }
 
         void Start()

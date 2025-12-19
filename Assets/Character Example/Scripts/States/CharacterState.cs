@@ -7,5 +7,6 @@ namespace StateMachines.CharacterExample
         JUMP,
         FALL,
         CROUCH,
+        ROLL,
     }
 }

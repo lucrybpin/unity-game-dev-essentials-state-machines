@@ -40,6 +40,14 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> ROLL
+            if (_owner.ActionReader.RollAction
+                && _owner.ActionReader.MoveAction.x != 0)
+            {
+                StateMachine.ChangeState(CharacterState.ROLL.ToString());
+                return;
+            }
+
             if (_owner.ActionReader.MoveAction.x != 0)
             {
                 _owner.Animator.Play("Crouch.Crouch Walk");
