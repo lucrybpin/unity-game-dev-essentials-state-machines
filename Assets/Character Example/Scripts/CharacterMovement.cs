@@ -16,11 +16,13 @@ namespace StateMachines.CharacterExample
 
         [SerializeField] LayerMask _obstacleLayer;
         [SerializeField] float _groundCheckRayLength;
+        [SerializeField] CapsuleCollider2D _capsuleCollider;
 
         public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody)
         {
             _obstacleLayer          = properties.ObstacleLayer;
             _groundCheckRayLength   = properties.GroundCheckRayLength;
+            _capsuleCollider        = rigidbody.GetComponent<CapsuleCollider2D>();
             WalkSpeed               = properties.WalkSpeed;
             CrouchSpeed             = properties.CrouchSpeed;
             RollSpeed               = properties.RollSpeed;
@@ -50,6 +52,20 @@ namespace StateMachines.CharacterExample
             float newY = y ?? currentVelocity.y;
 
             SetVelocity(newX, newY);
+        }
+
+        public void SetCrouch(bool isCrouching)
+        {
+            if (isCrouching)
+            {
+                _capsuleCollider.offset = new Vector2(0, -0.25f);
+                _capsuleCollider.size = new Vector2(0.7f, 1.25f);
+            }
+            else
+            {
+                _capsuleCollider.offset = new Vector2(0, 0);
+                _capsuleCollider.size = new Vector2(0.7f, 1.8f);
+            }
         }
 
         public void DebugRays()

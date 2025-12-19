@@ -13,6 +13,8 @@ namespace StateMachines.CharacterExample
         public void Enter()
         {
             _owner.Animator.Play("Crouch.Crouch Idle");
+            _owner.Movement.SetCrouch(true);
+            _owner.Movement.SetVelocity(x: 0);
         }
         
         public void Execute()
@@ -64,7 +66,7 @@ namespace StateMachines.CharacterExample
         
         public void Exit()
         {
-            
+            _owner.Movement.SetCrouch(false);
         }
 
     } // End of Class
