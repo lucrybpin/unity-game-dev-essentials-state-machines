@@ -7,6 +7,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public CharacterProperties CharacterProperties { get; private set; }
         [field: SerializeField] public CharacterActionReader ActionReader { get; private set; }
         [field: SerializeField] public CharacterMovement Movement { get; private set; }
+        [field: SerializeField] public CharacterSensor Sensor { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
 
         [field: SerializeField] public StateMachine StateMachine { get; private set; }
@@ -15,6 +16,7 @@ namespace StateMachines.CharacterExample
         void Awake()
         {
             Movement        = new CharacterMovement(CharacterProperties, GetComponent<Rigidbody2D>());
+            Sensor          = new CharacterSensor(this);
             StateMachine    = new StateMachine();
 
             StateMachine.AddState(CharacterState.IDLE.ToString(), new IdleState(this));

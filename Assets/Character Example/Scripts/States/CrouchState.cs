@@ -28,7 +28,8 @@ namespace StateMachines.CharacterExample
 
             // -> IDLE
             if (_owner.ActionReader.MoveAction.y >= 0
-                && _owner.ActionReader.MoveAction.x == 0)
+                && _owner.ActionReader.MoveAction.x == 0
+                && !_owner.Sensor.SensorData.HaveHeadObstacle)
             {
                 StateMachine.ChangeState(CharacterState.IDLE.ToString());
                 return;
@@ -36,7 +37,8 @@ namespace StateMachines.CharacterExample
             
             // -> WALK
             if (_owner.ActionReader.MoveAction.y >= 0
-                && _owner.ActionReader.MoveAction.x != 0)
+                && _owner.ActionReader.MoveAction.x != 0
+                && !_owner.Sensor.SensorData.HaveHeadObstacle)
             {
                 StateMachine.ChangeState(CharacterState.WALK.ToString());
                 return;
