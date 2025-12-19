@@ -740,6 +740,7 @@ MonoBehaviour:
     <IsGrounded>k__BackingField: 0
     <RigidBody>k__BackingField: {fileID: 0}
     <WalkSpeed>k__BackingField: 0
+    <CrouchSpeed>k__BackingField: 0
     <JumpSpeed>k__BackingField: 0
     <Velocity>k__BackingField: {x: 0, y: 0}
     _obstacleLayer:
