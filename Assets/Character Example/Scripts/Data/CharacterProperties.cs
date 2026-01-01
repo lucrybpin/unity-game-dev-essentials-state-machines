@@ -11,6 +11,7 @@ namespace StateMachines.CharacterExample
         public float GroundCheckRayLength;
         public float WalkSpeed;
         public float CrouchSpeed;
+        public float RunSpeed;
         public float RollSpeed;
         public float JumpSpeed;
     }

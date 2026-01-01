@@ -2,19 +2,19 @@ using UnityEngine;
 
 namespace StateMachines.CharacterExample
 {
-    public class WalkState : IState
+    public class RunState : IState
     {
         public StateMachine StateMachine { get; set; }
         CharacterController _owner;
         
-        public WalkState(CharacterController owner)
+        public RunState(CharacterController owner)
         {
             _owner = owner;
         }
         
         public void Enter()
         {
-            _owner.Animator.Play("Walk");
+            _owner.Animator.Play("Run");
         }
         
         public void Execute()
@@ -33,29 +33,16 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
-            // -> JUMP
-            if (_owner.ActionReader.JumpAction)
+            // -> WALK
+            if (!_owner.ActionReader.RunAction
+                && _owner.ActionReader.MoveAction.x != 0)
             {
-                StateMachine.ChangeState(CharacterState.JUMP.ToString());
-                return;
-            }
-
-            // -> CROUCH
-            if (_owner.ActionReader.MoveAction.y < 0)
-            {
-                StateMachine.ChangeState(CharacterState.CROUCH.ToString());
-                return;
-            }
-
-            // -> RUN
-            if (_owner.ActionReader.RunAction)
-            {
-                StateMachine.ChangeState(CharacterState.RUN.ToString());
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
                 return;
             }
 
             _owner.Movement.SetVelocity(
-                x: _owner.Movement.WalkSpeed * _owner.ActionReader.MoveAction.x
+                x: _owner.Movement.RunSpeed * _owner.ActionReader.MoveAction.x
             );
         }
         
@@ -63,6 +50,5 @@ namespace StateMachines.CharacterExample
         {
             
         }
-
-    } // End of Class
+    }
 }

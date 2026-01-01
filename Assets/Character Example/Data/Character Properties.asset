@@ -18,5 +18,6 @@ MonoBehaviour:
   GroundCheckRayLength: 1
   WalkSpeed: 2.1
   CrouchSpeed: 1.4
+  RunSpeed: 4.8
   RollSpeed: 6.75
   JumpSpeed: 6.4

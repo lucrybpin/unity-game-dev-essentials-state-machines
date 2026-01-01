@@ -10,6 +10,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }
+        [field: SerializeField] public float RunSpeed { get; private set; }
         [field: SerializeField] public float RollSpeed { get; private set; }
         [field: SerializeField] public float JumpSpeed { get; private set; }
         [field: SerializeField] public Vector2 Velocity { get; private set; }
@@ -25,6 +26,7 @@ namespace StateMachines.CharacterExample
             _capsuleCollider        = rigidbody.GetComponent<CapsuleCollider2D>();
             WalkSpeed               = properties.WalkSpeed;
             CrouchSpeed             = properties.CrouchSpeed;
+            RunSpeed                = properties.RunSpeed;
             RollSpeed               = properties.RollSpeed;
             JumpSpeed               = properties.JumpSpeed;
             RigidBody               = rigidbody;

@@ -8,5 +8,6 @@ namespace StateMachines.CharacterExample
         FALL,
         CROUCH,
         ROLL,
+        RUN,
     }
 }

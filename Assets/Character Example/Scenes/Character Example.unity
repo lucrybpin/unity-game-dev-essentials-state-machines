@@ -964,11 +964,13 @@ MonoBehaviour:
     <MoveAction>k__BackingField: {x: 0, y: 0}
     <JumpAction>k__BackingField: 0
     <RollAction>k__BackingField: 0
+    <RunAction>k__BackingField: 0
   <Movement>k__BackingField:
     <IsGrounded>k__BackingField: 0
     <RigidBody>k__BackingField: {fileID: 0}
     <WalkSpeed>k__BackingField: 0
     <CrouchSpeed>k__BackingField: 0
+    <RunSpeed>k__BackingField: 0
     <RollSpeed>k__BackingField: 0
     <JumpSpeed>k__BackingField: 0
     <Velocity>k__BackingField: {x: 0, y: 0}
