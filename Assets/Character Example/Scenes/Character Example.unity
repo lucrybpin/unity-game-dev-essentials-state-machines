@@ -415,10 +415,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430159943}
+  - component: {fileID: 430159947}
   - component: {fileID: 430159946}
   - component: {fileID: 430159945}
   - component: {fileID: 430159944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,6 +569,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &430159947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430159942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a15c01ad730624d94db918349969c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidBody2D: {fileID: 430159945}
 --- !u!1 &498524861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1209,7 @@ MonoBehaviour:
   <Movement>k__BackingField:
     <IsGrounded>k__BackingField: 0
     <RigidBody>k__BackingField: {fileID: 0}
+    <FacingDirection>k__BackingField: 0
     <WalkSpeed>k__BackingField: 0
     <CrouchSpeed>k__BackingField: 0
     <RunSpeed>k__BackingField: 0
@@ -1209,7 +1224,12 @@ MonoBehaviour:
   <Sensor>k__BackingField:
     <Owner>k__BackingField: {fileID: 0}
     <SensorData>k__BackingField:
+      HavePushPull: 0
       HaveHeadObstacle: 0
+    _pushPullRayLenght: 0
+    _obstacleLayer:
+      serializedVersion: 2
+      m_Bits: 0
     _crouchSensor: {fileID: 0}
   <Animator>k__BackingField: {fileID: 1574368037}
   <StateMachine>k__BackingField:

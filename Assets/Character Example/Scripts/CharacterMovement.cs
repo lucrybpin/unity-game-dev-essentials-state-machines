@@ -8,6 +8,7 @@ namespace StateMachines.CharacterExample
     {
         [field: SerializeField] public bool IsGrounded { get; private set; }
         [field: SerializeField] public Rigidbody2D RigidBody { get; private set; }
+        [field: SerializeField] public float FacingDirection { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }
         [field: SerializeField] public float RunSpeed { get; private set; }
@@ -30,6 +31,7 @@ namespace StateMachines.CharacterExample
             RollSpeed               = properties.RollSpeed;
             JumpSpeed               = properties.JumpSpeed;
             RigidBody               = rigidbody;
+            FacingDirection         = 1;
         }
 
         public void OnUpdate()
@@ -40,8 +42,15 @@ namespace StateMachines.CharacterExample
 
         public void SetVelocity(float x, float y)
         {
-            if(x > 0) RigidBody.transform.localScale = new Vector3(1,1,1);
-            else if(x < 0) RigidBody.transform.localScale = new Vector3(-1,1,1);
+            if(x > 0)
+            {
+                RigidBody.transform.localScale = new Vector3(1, 1, 1);
+                FacingDirection = 1;
+            } 
+            else if(x < 0) {
+                RigidBody.transform.localScale = new Vector3(-1,1,1);
+                FacingDirection = -1;
+            }
 
             RigidBody.linearVelocity = new Vector2(x,y);
         }

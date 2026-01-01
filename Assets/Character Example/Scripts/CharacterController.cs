@@ -43,6 +43,7 @@ namespace StateMachines.CharacterExample
             ActionReader.OnUpdate();
             Movement.OnUpdate();
             StateMachine.Update();
+            Sensor.OnUpdate();
         }
 
         void OnDisable()
@@ -56,6 +57,7 @@ namespace StateMachines.CharacterExample
                 return;
 
             Movement.DebugRays();
+            Sensor.DebugRays();
         }
 
     } // End of Class

@@ -14,5 +14,8 @@ namespace StateMachines.CharacterExample
         public float RunSpeed;
         public float RollSpeed;
         public float JumpSpeed;
+
+        [Header("Sensor Data")]
+        public float PushPullRayLength;
     }
 }
