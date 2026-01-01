@@ -9,5 +9,6 @@ namespace StateMachines.CharacterExample
         CROUCH,
         ROLL,
         RUN,
+        PUSH_PULL_IDLE,
     }
 }

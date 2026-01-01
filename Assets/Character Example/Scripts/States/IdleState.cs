@@ -1,3 +1,5 @@
+using StateMachines.Obstacles;
+
 namespace StateMachines.CharacterExample
 {
     public class IdleState : IState
@@ -29,6 +31,15 @@ namespace StateMachines.CharacterExample
             if (_owner.ActionReader.MoveAction.y < 0)
             {
                 StateMachine.ChangeState(CharacterState.CROUCH.ToString());
+                return;
+            }
+
+            // -> PUSH/PULL IDLE
+            IPushable pushable = _owner.Sensor.GetPushable();
+            if(pushable != null
+                && _owner.ActionReader.InteractAction)
+            {
+                StateMachine.ChangeState(CharacterState.PUSH_PULL_IDLE.ToString());
                 return;
             }
 

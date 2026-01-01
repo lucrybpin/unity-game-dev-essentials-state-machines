@@ -12,6 +12,8 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public bool JumpAction { get; private set; }
         [field: SerializeField] public bool RollAction { get; private set; }
         [field: SerializeField] public bool RunAction { get; private set; }
+        [field: SerializeField] public bool InteractAction { get; private set; }
+
 
         public void OnEnable()
         {
@@ -49,6 +51,7 @@ namespace StateMachines.CharacterExample
         {
             MoveAction = _input.Player.Move.ReadValue<Vector2>();
             JumpAction = _input.Player.Jump.WasPressedThisFrame();
+            InteractAction = _input.Player.Interact.WasPressedThisFrame();
         }
 
         public void OnDisable()

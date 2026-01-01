@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using StateMachines.CharacterExample;
+using StateMachines.Obstacles;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace StateMachines.CharacterExample
 {
@@ -50,6 +52,15 @@ namespace StateMachines.CharacterExample
         void UpdateCrouchSensor(List<GameObject> headObstacles)
         {
             SensorData.HaveHeadObstacle = headObstacles.Count == 0 ? false : true;
+        }
+
+        public IPushable GetPushable()
+        {
+            IPushable pushableFound = null;
+            if(SensorData.PushPullHit)
+                SensorData.PushPullHit.collider.TryGetComponent(out pushableFound);
+
+            return pushableFound;
         }
 
         public void DebugRays()
