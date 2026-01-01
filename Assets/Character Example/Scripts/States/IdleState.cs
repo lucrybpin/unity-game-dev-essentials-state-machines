@@ -1,4 +1,5 @@
 using StateMachines.Obstacles;
+using UnityEngine;
 
 namespace StateMachines.CharacterExample
 {

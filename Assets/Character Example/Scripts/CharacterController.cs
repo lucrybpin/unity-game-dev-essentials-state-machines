@@ -26,6 +26,7 @@ namespace StateMachines.CharacterExample
             StateMachine.AddState(CharacterState.CROUCH.ToString(), new CrouchState(this));
             StateMachine.AddState(CharacterState.ROLL.ToString(), new RollState(this));
             StateMachine.AddState(CharacterState.RUN.ToString(), new RunState(this));
+            StateMachine.AddState(CharacterState.PUSH_PULL_IDLE.ToString(), new PushPullIdleState(this));
         }
 
         void Start()

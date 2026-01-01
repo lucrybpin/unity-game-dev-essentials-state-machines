@@ -1,0 +1,52 @@
+using UnityEngine;
+
+namespace StateMachines.CharacterExample
+{
+    public class PushPullIdleState : IState
+    {
+        public StateMachine StateMachine { get; set; }
+        CharacterController _owner;
+        float _enteringDirection;
+        
+        public PushPullIdleState(CharacterController owner)
+        {
+            _owner = owner;
+        }
+        
+        public void Enter()
+        {
+            _enteringDirection = _owner.Movement.FacingDirection;
+            _owner.Animator.Play("Push Pull.Push Pull Idle");
+        }
+        
+        public void Execute()
+        {
+            // -> IDLE (pushable out of range)
+            if (_owner.Sensor.GetPushable() == null)
+            {
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                return;
+            }
+
+            // -> IDLE (move to other direction)
+            if (_owner.ActionReader.MoveAction.x == -_enteringDirection)
+            {
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                return;
+            }
+
+            // -> IDLE (exit Interaction mode)
+            else if (_owner.ActionReader.InteractAction)
+            {
+                StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                return;
+            }
+
+        }
+        
+        public void Exit()
+        {
+            
+        }
+    }
+}
