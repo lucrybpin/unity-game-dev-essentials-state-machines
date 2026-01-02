@@ -85,8 +85,6 @@ namespace StateMachines.CharacterExample
 
         public void SetHandsCollision(bool enabled)
         {
-            Debug.Log($">>>> Enabling hand collision");
-            
             _handCollider.SetActive(enabled);
         }
 

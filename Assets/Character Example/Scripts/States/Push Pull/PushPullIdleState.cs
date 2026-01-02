@@ -17,6 +17,12 @@ namespace StateMachines.CharacterExample
         {
             _enteringDirection = _owner.Movement.FacingDirection;
             _owner.Animator.Play("Push Pull.Push Pull Idle");
+
+            Vector2 warpPosition =
+                _owner.Sensor.SensorData.PushPullHit.point
+                    + _owner.Movement.FacingDirection * Vector2.left * 0.7f;
+
+            _owner.transform.position = warpPosition;
         }
         
         public void Execute()
