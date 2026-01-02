@@ -389,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &425100533
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,6 +1213,7 @@ MonoBehaviour:
     <FacingDirection>k__BackingField: 0
     <WalkSpeed>k__BackingField: 0
     <CrouchSpeed>k__BackingField: 0
+    <PushSpeed>k__BackingField: 0
     <RunSpeed>k__BackingField: 0
     <RollSpeed>k__BackingField: 0
     <JumpSpeed>k__BackingField: 0
@@ -1222,6 +1223,7 @@ MonoBehaviour:
       m_Bits: 0
     _groundCheckRayLength: 0
     _capsuleCollider: {fileID: 0}
+    _handCollider: {fileID: 0}
   <Sensor>k__BackingField:
     <Owner>k__BackingField: {fileID: 0}
     <SensorData>k__BackingField:
@@ -1235,6 +1237,7 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 1574368037}
   <StateMachine>k__BackingField:
     _currentStateName: 
+  _pushHands: {fileID: 425100532}
   _debug: 0
 --- !u!1 &2061336855
 GameObject:

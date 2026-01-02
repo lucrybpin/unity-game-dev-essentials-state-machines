@@ -28,6 +28,13 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> PUSH
+            if(_owner.ActionReader.MoveAction.x == _enteringDirection)
+            {
+                StateMachine.ChangeState(CharacterState.PUSH.ToString());
+                return;
+            }
+
             // -> IDLE (move to other direction)
             if (_owner.ActionReader.MoveAction.x == -_enteringDirection)
             {

@@ -9,13 +9,14 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public CharacterMovement Movement { get; private set; }
         [field: SerializeField] public CharacterSensor Sensor { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
-
         [field: SerializeField] public StateMachine StateMachine { get; private set; }
+
+        [SerializeField] GameObject _pushHands;
         [SerializeField] bool _debug;
 
         void Awake()
         {
-            Movement        = new CharacterMovement(CharacterProperties, GetComponent<Rigidbody2D>());
+            Movement        = new CharacterMovement(CharacterProperties, GetComponent<Rigidbody2D>(), _pushHands);
             Sensor          = new CharacterSensor(this);
             StateMachine    = new StateMachine();
 
@@ -27,6 +28,7 @@ namespace StateMachines.CharacterExample
             StateMachine.AddState(CharacterState.ROLL.ToString(), new RollState(this));
             StateMachine.AddState(CharacterState.RUN.ToString(), new RunState(this));
             StateMachine.AddState(CharacterState.PUSH_PULL_IDLE.ToString(), new PushPullIdleState(this));
+            StateMachine.AddState(CharacterState.PUSH.ToString(), new PushState(this));
         }
 
         void Start()

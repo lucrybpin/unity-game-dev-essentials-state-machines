@@ -11,6 +11,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public float FacingDirection { get; private set; }
         [field: SerializeField] public float WalkSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }
+        [field: SerializeField] public float PushSpeed { get; private set; }
         [field: SerializeField] public float RunSpeed { get; private set; }
         [field: SerializeField] public float RollSpeed { get; private set; }
         [field: SerializeField] public float JumpSpeed { get; private set; }
@@ -19,14 +20,17 @@ namespace StateMachines.CharacterExample
         [SerializeField] LayerMask _obstacleLayer;
         [SerializeField] float _groundCheckRayLength;
         [SerializeField] CapsuleCollider2D _capsuleCollider;
+        [SerializeField] GameObject _handCollider;
 
-        public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody)
+        public CharacterMovement(CharacterProperties properties, Rigidbody2D rigidbody, GameObject handCollider)
         {
             _obstacleLayer          = properties.ObstacleLayer;
             _groundCheckRayLength   = properties.GroundCheckRayLength;
             _capsuleCollider        = rigidbody.GetComponent<CapsuleCollider2D>();
+            _handCollider           = handCollider;
             WalkSpeed               = properties.WalkSpeed;
             CrouchSpeed             = properties.CrouchSpeed;
+            PushSpeed               = properties.PushSpeed;
             RunSpeed                = properties.RunSpeed;
             RollSpeed               = properties.RollSpeed;
             JumpSpeed               = properties.JumpSpeed;
@@ -77,6 +81,13 @@ namespace StateMachines.CharacterExample
                 _capsuleCollider.offset = new Vector2(0, 0);
                 _capsuleCollider.size = new Vector2(0.7f, 1.8f);
             }
+        }
+
+        public void SetHandsCollision(bool enabled)
+        {
+            Debug.Log($">>>> Enabling hand collision");
+            
+            _handCollider.SetActive(enabled);
         }
 
         public void DebugRays()
