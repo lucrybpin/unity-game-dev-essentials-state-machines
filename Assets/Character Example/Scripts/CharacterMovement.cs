@@ -44,29 +44,36 @@ namespace StateMachines.CharacterExample
             Velocity    = RigidBody.linearVelocity;
         }
 
-        public void SetVelocity(float x, float y)
+        public void SetVelocity(float x, float y, bool ignoreFlip = false)
         {
             if(x > 0)
             {
-                RigidBody.transform.localScale = new Vector3(1, 1, 1);
-                FacingDirection = 1;
+                if(!ignoreFlip)
+                {
+                    RigidBody.transform.localScale = new Vector3(1, 1, 1);
+                    FacingDirection = 1;
+                }
             } 
             else if(x < 0) {
-                RigidBody.transform.localScale = new Vector3(-1,1,1);
-                FacingDirection = -1;
+                if (!ignoreFlip)
+                {
+                    RigidBody.transform.localScale = new Vector3(-1, 1, 1);
+                    FacingDirection = -1;
+                }
             }
 
             RigidBody.linearVelocity = new Vector2(x,y);
         }
 
-        public void SetVelocity(float ? x = null, float ? y = null)
+        public void SetVelocity(float ? x = null, float ? y = null, bool ? ignoreFlip = false)
         {
             Vector3 currentVelocity = RigidBody.linearVelocity;
 
             float newX = x ?? currentVelocity.x;
             float newY = y ?? currentVelocity.y;
+            bool ignoreSpriteFlip = ignoreFlip ?? false;
 
-            SetVelocity(newX, newY);
+            SetVelocity(newX, newY, ignoreSpriteFlip);
         }
 
         public void SetCrouch(bool isCrouching)
