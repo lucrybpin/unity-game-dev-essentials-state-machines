@@ -29,6 +29,7 @@ namespace StateMachines.CharacterExample
             StateMachine.AddState(CharacterState.RUN.ToString(), new RunState(this));
             StateMachine.AddState(CharacterState.PUSH_PULL_IDLE.ToString(), new PushPullIdleState(this));
             StateMachine.AddState(CharacterState.PUSH.ToString(), new PushState(this));
+            StateMachine.AddState(CharacterState.PULL.ToString(), new PullState(this));
         }
 
         void Start()

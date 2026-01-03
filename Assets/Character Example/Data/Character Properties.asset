@@ -22,4 +22,4 @@ MonoBehaviour:
   RunSpeed: 4.8
   RollSpeed: 6.75
   JumpSpeed: 6.4
-  PushPullRayLength: 0.9
+  PushPullRayLength: 0.8

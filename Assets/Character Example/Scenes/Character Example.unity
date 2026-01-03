@@ -1236,10 +1236,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1761,6 +1761,7 @@ MonoBehaviour:
     _obstacleLayer:
       serializedVersion: 2
       m_Bits: 0
+    _pullSensor: {fileID: 0}
     _crouchSensor: {fileID: 0}
   <Animator>k__BackingField: {fileID: 1574368037}
   <StateMachine>k__BackingField:

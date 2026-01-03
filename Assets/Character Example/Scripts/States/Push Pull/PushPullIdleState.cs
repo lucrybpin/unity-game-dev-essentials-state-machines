@@ -42,7 +42,14 @@ namespace StateMachines.CharacterExample
             }
 
             // -> IDLE (move to other direction)
-            if (_owner.ActionReader.MoveAction.x == -_enteringDirection)
+            if (_owner.ActionReader.MoveAction.x == -_enteringDirection
+                && _owner.Sensor.GetPullable() != null)
+            {
+                StateMachine.ChangeState(CharacterState.PULL.ToString());
+                return;
+            }
+            else if (_owner.ActionReader.MoveAction.x == -_enteringDirection
+                && _owner.Sensor.GetPullable() == null)
             {
                 StateMachine.ChangeState(CharacterState.IDLE.ToString());
                 return;
