@@ -12,6 +12,7 @@ namespace StateMachines.CharacterExample
     {
         public bool HavePushPull;
         public RaycastHit2D PushPullHit;
+        public IPullable Pullable;
         public bool HaveHeadObstacle;
     }
 
@@ -23,7 +24,21 @@ namespace StateMachines.CharacterExample
         [SerializeField] float _pushPullRayLenght;
         [SerializeField] LayerMask _obstacleLayer;
 
+        [SerializeField] PullSensor _pullSensor;
         [SerializeField] CrouchSensor _crouchSensor;
+
+        public CharacterSensor(CharacterController owner)
+        {
+            Owner = owner;
+            SensorData = new SensorData();
+            _pullSensor = owner.GetComponentInChildren<PullSensor>();
+            _crouchSensor = owner.GetComponentInChildren<CrouchSensor>();
+            _pushPullRayLenght = owner.CharacterProperties.PushPullRayLength;
+            _obstacleLayer = owner.CharacterProperties.ObstacleLayer;
+
+            _pullSensor.OnPullSensorChanged += UpdatePullSensor;
+            _crouchSensor.OnCrouchSensorChanged += UpdateCrouchSensor;
+        }
 
         public void OnUpdate()
         {
@@ -37,21 +52,20 @@ namespace StateMachines.CharacterExample
                 SensorData.HavePushPull = false;
             }
         }
-
-        public CharacterSensor(CharacterController owner)
+        
+        void UpdatePullSensor(IPullable pullable)
         {
-            Owner = owner;
-            SensorData = new SensorData();
-            _crouchSensor = owner.GetComponentInChildren<CrouchSensor>();
-            _pushPullRayLenght = owner.CharacterProperties.PushPullRayLength;
-            _obstacleLayer = owner.CharacterProperties.ObstacleLayer;
-
-            _crouchSensor.OnCrouchSensorChanged += UpdateCrouchSensor;
+            SensorData.Pullable = pullable;
         }
 
         void UpdateCrouchSensor(List<GameObject> headObstacles)
         {
             SensorData.HaveHeadObstacle = headObstacles.Count == 0 ? false : true;
+        }
+
+        public IPullable GetPullable()
+        {
+            return SensorData.Pullable;
         }
 
         public IPushable GetPushable()
