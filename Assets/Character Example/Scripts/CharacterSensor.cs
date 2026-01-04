@@ -11,8 +11,10 @@ namespace StateMachines.CharacterExample
     public class SensorData
     {
         public bool HavePushPull;
+        public bool HaveClimbable;
         public RaycastHit2D PushPullHit;
         public IPullable Pullable;
+        public IClimbable Climbable;
         public bool HaveHeadObstacle;
     }
 
@@ -25,6 +27,7 @@ namespace StateMachines.CharacterExample
         [SerializeField] LayerMask _obstacleLayer;
 
         [SerializeField] PullSensor _pullSensor;
+        [SerializeField] ClimbSensor _climbSensor;
         [SerializeField] CrouchSensor _crouchSensor;
 
         public CharacterSensor(CharacterController owner)
@@ -32,11 +35,13 @@ namespace StateMachines.CharacterExample
             Owner = owner;
             SensorData = new SensorData();
             _pullSensor = owner.GetComponentInChildren<PullSensor>();
+            _climbSensor = owner.GetComponentInChildren<ClimbSensor>();
             _crouchSensor = owner.GetComponentInChildren<CrouchSensor>();
             _pushPullRayLenght = owner.CharacterProperties.PushPullRayLength;
             _obstacleLayer = owner.CharacterProperties.ObstacleLayer;
 
             _pullSensor.OnPullSensorChanged += UpdatePullSensor;
+            _climbSensor.OnClimbableSensorChanged += UpdateClimbSensor;
             _crouchSensor.OnCrouchSensorChanged += UpdateCrouchSensor;
         }
 
@@ -56,6 +61,16 @@ namespace StateMachines.CharacterExample
         void UpdatePullSensor(IPullable pullable)
         {
             SensorData.Pullable = pullable;
+        }
+
+        void UpdateClimbSensor(IClimbable climbable)
+        {
+            SensorData.Climbable = climbable;
+
+            if (climbable != null)
+                SensorData.HaveClimbable = true;
+            else
+                SensorData.HaveClimbable = false;
         }
 
         void UpdateCrouchSensor(List<GameObject> headObstacles)

@@ -24,8 +24,6 @@ namespace StateMachines.Obstacles
         {
             if (other.TryGetComponent<IPullable>(out IPullable pullable))
             {
-                Debug.Log($">>>> {other.gameObject.name}");
-                
                 _pullable = null;
                 _havePullable = false;
                 OnPullSensorChanged?.Invoke(null);
