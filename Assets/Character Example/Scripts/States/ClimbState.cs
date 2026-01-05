@@ -1,4 +1,3 @@
-using System;
 using StateMachines.Obstacles;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ namespace StateMachines.CharacterExample
         CharacterController _owner;
         Vector3 _bottomPoint;
         Vector3 _topPoint;
+        Vector3 _topOffset;
 
         public ClimbState(CharacterController owner)
         {
@@ -28,10 +28,28 @@ namespace StateMachines.CharacterExample
 
             bool isAtBottom = distanceToBottom < distanceToTop;
 
+            if (isAtBottom)
+            {
+                if (_owner.ActionReader.MoveAction.y < 0)
+                {
+                    StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                    return;
+                }
+            }
+            else
+            {
+                if (_owner.ActionReader.MoveAction.y > 0)
+                {
+                    StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                    return;
+                }
+            }
+
             _owner.Animator.Play("Climb");
             _owner.Movement.SimulatedRigidbody(false);
 
-            _owner.transform.position = (isAtBottom) ? _bottomPoint : _topPoint;
+            _topOffset = 1.3f * Vector3.down;
+            _owner.transform.position = (isAtBottom) ? _bottomPoint : _topPoint + _topOffset;
 
             _owner.AnimationEvents.OnEvent1 += AnimateUp;
             _owner.AnimationEvents.OnEvent2 += AnimateDown;
@@ -64,6 +82,14 @@ namespace StateMachines.CharacterExample
             if (_owner.ActionReader.MoveAction.y > 0)
             {
                 _owner.transform.position += 0.5f * Vector3.up;
+                float distance = Vector3.Distance(_owner.transform.position, _topPoint + _topOffset);
+                if (distance <= 0.5f)
+                {
+                    _owner.transform.position = _topPoint;
+                    _owner.Movement.SimulatedRigidbody(true);
+                    StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                    return;
+                }
             }
         }
 
@@ -72,6 +98,14 @@ namespace StateMachines.CharacterExample
             if (_owner.ActionReader.MoveAction.y < 0)
             {
                 _owner.transform.position -= 0.5f * Vector3.up;
+                float distance = Vector3.Distance(_owner.transform.position, _bottomPoint);
+                if (distance <= 0.5f)
+                {
+                    _owner.transform.position = _bottomPoint;
+                    _owner.Movement.SimulatedRigidbody(true);
+                    StateMachine.ChangeState(CharacterState.IDLE.ToString());
+                    return;
+                }
             }
         }
     }
