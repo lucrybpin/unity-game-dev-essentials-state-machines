@@ -28,6 +28,14 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> CLIMB
+            if (_owner.Sensor.SensorData.Climbable != null
+                && _owner.ActionReader.MoveAction.y != 0)
+            {
+                StateMachine.ChangeState(CharacterState.CLIMB.ToString());
+                return;
+            }
+
             // -> CROUCH
             if (_owner.ActionReader.MoveAction.y < 0)
             {

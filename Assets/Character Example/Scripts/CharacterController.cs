@@ -30,6 +30,7 @@ namespace StateMachines.CharacterExample
             StateMachine.AddState(CharacterState.PUSH_PULL_IDLE.ToString(), new PushPullIdleState(this));
             StateMachine.AddState(CharacterState.PUSH.ToString(), new PushState(this));
             StateMachine.AddState(CharacterState.PULL.ToString(), new PullState(this));
+            StateMachine.AddState(CharacterState.CLIMB.ToString(), new ClimbState(this));
         }
 
         void Start()

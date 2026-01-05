@@ -12,5 +12,6 @@ namespace StateMachines.CharacterExample
         PUSH_PULL_IDLE,
         PUSH,
         PULL,
+        CLIMB,
     }
 }
