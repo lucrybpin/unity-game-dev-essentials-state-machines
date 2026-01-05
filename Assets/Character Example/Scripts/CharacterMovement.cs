@@ -95,6 +95,11 @@ namespace StateMachines.CharacterExample
             _handCollider.SetActive(enabled);
         }
 
+        public void SimulatedRigidbody(bool simulate)
+        {
+            RigidBody.simulated = simulate;
+        }
+
         public void DebugRays()
         {
             if(!Application.isPlaying)

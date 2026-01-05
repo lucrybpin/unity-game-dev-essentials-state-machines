@@ -9,6 +9,7 @@ namespace StateMachines.CharacterExample
         [field: SerializeField] public CharacterMovement Movement { get; private set; }
         [field: SerializeField] public CharacterSensor Sensor { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
+        [field: SerializeField] public CharacterAnimationEvents AnimationEvents { get; private set; }
         [field: SerializeField] public StateMachine StateMachine { get; private set; }
 
         [SerializeField] GameObject _pushHands;
