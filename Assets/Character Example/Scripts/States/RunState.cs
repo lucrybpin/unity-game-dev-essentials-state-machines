@@ -33,6 +33,13 @@ namespace StateMachines.CharacterExample
                 return;
             }
 
+            // -> JUMP
+            if (_owner.ActionReader.JumpAction)
+            {
+                StateMachine.ChangeState(CharacterState.JUMP.ToString());
+                return;
+            }
+
             // -> WALK
             if (!_owner.ActionReader.RunAction
                 && _owner.ActionReader.MoveAction.x != 0)

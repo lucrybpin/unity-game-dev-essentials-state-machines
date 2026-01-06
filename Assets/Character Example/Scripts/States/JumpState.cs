@@ -24,6 +24,10 @@ namespace StateMachines.CharacterExample
                 StateMachine.ChangeState(CharacterState.FALL.ToString());
                 return;
             }
+
+            _owner.Movement.SetVelocity(
+                x: _owner.Movement.WalkSpeed * _owner.ActionReader.MoveAction.x
+            );
         }
 
         public void Exit() { }
