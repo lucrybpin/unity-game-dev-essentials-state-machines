@@ -6,6 +6,8 @@
 
 Welcome to **Game Dev Essentials - State Machines in Unity**! This comprehensive Udemy course dives deep into the world of state machines and how to implement them effectively in Unity game development. Whether you're a beginner looking to understand the fundamentals or an experienced developer wanting to refine your skills, this course will equip you with the knowledge to create robust, maintainable game logic using state machines.
 
+Course: https://www.udemy.com/course/game-dev-essentials-state-machines-in-unity/?referralCode=7FEFAF60442E1888BB41
+
 ## What You'll Learn
 
 - Understanding the concept of state machines and their importance in game development
